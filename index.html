@@ -8,8 +8,9 @@
         <script>
             window.onload = function(){
                 var url = window.location.toString(),
-                    tokens = url.split("?");
+                    tokens = url.split("?"), isRedirecting = false;
                 if (tokens.length < 2){
+                    isRedirecting = true;
                     defaultRedirect();
                 } else {
                     var request = new XMLHttpRequest();
@@ -33,6 +34,7 @@
                             if (token == rToken){
                                 document.body.innerHTML = `<b>Redirecting to </b><pre style="display: inline;">${rLink}</pre> <b>. . .</b>`;
                                 window.location = rLinsk;
+                                isRedirecting = true;
                             }
                         }
                     });
@@ -41,7 +43,7 @@
                     document.body.innerHTML = `<b>No link found! Redirecting to </b><pre style="display: inline;">https://www.github.com/TotsukaINC</pre> <b>. . .</b>`;
                     window.location = "https://www.github.com/TotsukaINC";
                 }
-                defaultRedirect();
+                if (!isRedirecting){defaultRedirect()};
             }
         </script>
     </body>
