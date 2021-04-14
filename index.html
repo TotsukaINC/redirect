@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Totsuka Redirect </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            window.onload = function(){
+                var url = window.location.toString(),
+                    tokens = url.split("?");
+                if (tokens.length < 2){
+                    defaultRedirect();
+                } else {
+                    var request = new XMLHttpRequest();
+                    request.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            redirectHandler(request.responseText, tokens[1]);
+                        }
+                    };
+                    request.open("GET", "redirects.txt", true);
+                    request.send();
+                }
+                function redirectHandler(data, token){
+                    var lines = data.replace(/^\/\/.*$/mg, "").split('\n');
+
+                    lines.forEach((link)=>{
+                        if(link != "" && link != undefined){
+                            var arr = link.replace(/\[|\]|\"|\ /g, "").split("=>"),
+                                rToken = arr[0],
+                                rLink = arr[1];
+
+                            if (token == rToken){
+                                document.body.innerHTML = `<b>Redirecting to </b><pre style="display: inline;">${rLink}</pre> <b>. . .</b>`;
+                                window.location = rLinsk;
+                            }
+                        }
+                    });
+                }
+                function defaultRedirect(){
+                    document.body.innerHTML = `<b>No link found! Redirecting to </b><pre style="display: inline;">https://www.github.com/TotsukaINC</pre> <b>. . .</b>`;
+                    window.location = "https://www.github.com/TotsukaINC";
+                }
+                defaultRedirect();
+            }
+        </script>
+    </body>
+</html>
