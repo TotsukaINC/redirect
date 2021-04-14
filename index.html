@@ -32,9 +32,9 @@
                                 rLink = arr[1];
 
                             if (token == rToken){
-                                document.body.innerHTML = `<b>Redirecting to </b><pre style="display: inline;">${rLink}</pre> <b>. . .</b>`;
-                                window.location = rLinsk;
                                 isRedirecting = true;
+                                document.body.innerHTML = `<b>Redirecting to </b><pre style="display: inline;">${rLink}</pre> <b>. . .</b>`;
+                                window.location = rLink;
                             }
                         }
                     });
