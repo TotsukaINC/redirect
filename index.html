@@ -43,7 +43,7 @@
                     document.body.innerHTML = `<b>No link found! Redirecting to </b><pre style="display: inline;">https://www.github.com/TotsukaINC</pre> <b>. . .</b>`;
                     window.location = "https://www.github.com/TotsukaINC";
                 }
-                if (!isRedirecting){defaultRedirect()};
+                setTimeout(()=>{if (!isRedirecting){defaultRedirect()}}, 3000);
             }
         </script>
     </body>
