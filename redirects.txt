@@ -15,3 +15,4 @@
 [TotsukaOS_R_April] => "https://youtu.be/dQw4w9WgXcQ"
 [TotsukaOS_R_May] => "https://youtu.be/BjDebmqFRuc"
 [Windows11_GSI_arm64] => "https://youtu.be/dQw4w9WgXcQ"
+[abtutoring] => "https://abtutoring.blogspot.com"
